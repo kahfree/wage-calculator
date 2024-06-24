@@ -5,7 +5,7 @@ app = Flask(__name__)
 app.secret_key = os.urandom(24)  # Secret key for session management
 
 # Hardcoded credentials
-USERNAME = 'user'
+USERNAME = 'User'
 PASSWORD = 'password'
 
 @app.route('/', methods=['GET', 'POST'])

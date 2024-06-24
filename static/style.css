@@ -1,10 +1,13 @@
 body {
     font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
 }
 
 .container {
-    width: 50%;
-    margin: 0 auto;
+    width: 90%;
+    max-width: 600px;
+    margin: 20px auto;
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 8px;
@@ -16,27 +19,33 @@ h1 {
 }
 
 .entry, .hourly-rate-entry, .day-entry {
-    margin-bottom: 10px;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
 }
 
 label {
-    display: inline-block;
-    width: 100px;
+    margin-bottom: 5px;
 }
 
 input[type="time"], input[type="number"], input[type="text"], input[type="password"] {
-    margin-right: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 button {
     display: block;
     width: 100%;
-    padding: 10px;
+    padding: 15px;
     background-color: #007bff;
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    font-size: 16px;
 }
 
 button:hover {
@@ -51,6 +60,16 @@ button:hover {
 
 h2 {
     margin-top: 20px;
+    text-align: center;
+}
+
+ul {
+    padding: 0;
+}
+
+ul li {
+    list-style-type: none;
+    margin-bottom: 10px;
 }
 
 a {
@@ -63,4 +82,25 @@ a {
 
 a:hover {
     text-decoration: underline;
+}
+
+@media (min-width: 600px) {
+    .day-entry {
+        flex-direction: row;
+        align-items: center;
+    }
+
+    label {
+        width: 100px;
+        margin-bottom: 0;
+    }
+
+    input[type="time"], input[type="number"], input[type="text"], input[type="password"] {
+        flex: 1;
+        margin-right: 10px;
+    }
+
+    input[type="time"]:last-of-type {
+        margin-right: 0;
+    }
 }
