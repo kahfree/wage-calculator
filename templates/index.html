@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weekly Earnings Calculator</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Weekly Earnings Calculator</h1>
+        <form method="POST">
+            <div class="hourly-rate-entry">
+                <label>Hourly Rate (€)</label>
+                <input type="number" name="hourly_rate" step="0.01" required>
+            </div>
+            {% for day in ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'] %}
+                <div class="day-entry">
+                    <label>{{ day }}</label>
+                    <input type="time" name="{{ day }}_start" value="00:00">
+                    <input type="time" name="{{ day }}_end" value="00:00">
+                </div>
+            {% endfor %}
+            <button type="submit">Calculate</button>
+        </form>
+        {% if work_hours %}
+            <h2>Work Hours</h2>
+            <ul>
+                {% for day, hours in work_hours.items() %}
+                    <li>{{ day }}: {{ hours }} hours</li>
+                {% endfor %}
+            </ul>
+            <h2>Total Hours: {{ total_hours }} hours</h2>
+            <h2>Total Earnings: €{{ total_earnings }}</h2>
+        {% endif %}
+        <a href="{{ url_for('logout') }}">Logout</a>
+    </div>
+</body>
+</html>
